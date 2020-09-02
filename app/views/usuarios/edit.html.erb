@@ -1,0 +1,6 @@
+<h1>Editing Usuario</h1>
+
+<%= render 'form', usuario: @usuario %>
+
+<%= link_to 'Show',empresa_usuario_path(@usuario.empresa_id, @usuario.id) %> |
+<%= link_to 'Back', empresa_usuarios_path(@empresa) %>

@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nit:</strong>
+  <%= @empresa.nit %>
+</p>
+
+<p>
+  <strong>Razon social:</strong>
+  <%= @empresa.razon_social %>
+</p>
+
+<p>
+  <strong>Nombre comercial:</strong>
+  <%= @empresa.nombre_comercial %>
+</p>
+
+<p>
+  <strong>Direccion comercial:</strong>
+  <%= @empresa.direccion_comercial %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @empresa.email %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @empresa.telefono %>
+</p>
+
+<p>
+  <strong>Usuario api:</strong>
+  <%= @empresa.usuario_api %>
+</p>
+
+<p>
+  <strong>Llave api:</strong>
+  <%= @empresa.llave_api %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @empresa.estado ? "Activo" : "Inactivo" %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_empresa_path(@empresa), class:"btn btn-warning" %> |
+<%= link_to 'Regresar', empresas_path, class:"btn btn-secondary" %>

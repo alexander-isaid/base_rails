@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Empresas</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nit</th>
+      <th>Razon social</th>
+      <th>Nombre comercial</th>
+      <th>Direccion comercial</th>
+      <th>Email</th>
+      <th>Telefono</th>
+      <th>Usuario api</th>
+      <th>Llave api</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @empresas.each do |empresa| %>
+      <tr>
+        <td><%= empresa.nit %></td>
+        <td><%= empresa.razon_social %></td>
+        <td><%= empresa.nombre_comercial %></td>
+        <td><%= empresa.direccion_comercial %></td>
+        <td><%= empresa.email %></td>
+        <td><%= empresa.telefono %></td>
+        <td><%= empresa.usuario_api %></td>
+        <td><%= empresa.llave_api %></td>
+        <td><%= empresa.estado ? "Activo" : "Inactivo"%></td>
+        <td><%= link_to 'Mostrar', empresa, class: "btn btn-info" %></td>
+        <td><%= link_to 'Editar', edit_empresa_path(empresa), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Eliminar', empresa, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Crear Empresa', new_empresa_path, class:"btn btn-success" %>

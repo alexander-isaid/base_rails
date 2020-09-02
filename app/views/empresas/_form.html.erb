@@ -1,0 +1,25 @@
+
+<%= simple_form_for(@empresa) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :nit %>
+    <%= f.input :razon_social %>
+    <%= f.input :nombre_comercial %>
+    <%= f.input :direccion_comercial %>
+    <%= f.input :email %>
+    <%= f.input :telefono %>
+    <%= f.input :usuario_api %>
+    <%= f.input :llave_api %>
+  </div>
+
+  <div class="form-actions">
+
+    <% if @empresa.new_record? %>
+        <%= f.button :submit, class:"btn btn-success", :value => "Nueva empresa" %>
+    <% else %>
+        <%= f.button :submit, class:"btn btn-primary", :value => "Editar empresa" %>
+    <% end %>
+  </div>
+<% end %>

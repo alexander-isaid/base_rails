@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Usuarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Empresa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @usuarios.each do |usuario| %>
+      <tr>
+        <td><%= usuario.email %></td>
+        <td><%= usuario.name %></td>
+        <td><%= usuario.empresa_id %></td>
+        <td><%= link_to 'Show', empresa_usuario_path(usuario.empresa_id, usuario.id) %></td>
+        <td><%= link_to 'Edit', edit_empresa_usuario_path(usuario.empresa_id, usuario.id) %></td>
+        <td><%= link_to 'Destroy', empresa_usuario_path(usuario.empresa_id, usuario.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Usuario', new_empresa_usuario_path %>

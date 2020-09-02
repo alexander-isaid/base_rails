@@ -1,0 +1,45 @@
+# == Schema Information
+#
+# Table name: empresas
+#
+#  id                  :integer          not null, primary key
+#  direccion_comercial :string(255)
+#  eliminado           :boolean
+#  email               :string(255)
+#  estado              :boolean
+#  llave_api           :string(255)
+#  nit                 :string(255)
+#  nombre_comercial    :string(255)
+#  razon_social        :string(255)
+#  telefono            :string(255)
+#  usuario             :string(255)
+#  usuario_api         :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
+one:
+  nit: MyString
+  razon_social: MyString
+  nombre_comercial: MyString
+  direccion_comercial: MyString
+  email: MyString
+  usuario: MyString
+  telefono: MyString
+  usuario_api: MyString
+  llave_api: MyString
+  estado: false
+  eliminado: false
+
+two:
+  nit: MyString
+  razon_social: MyString
+  nombre_comercial: MyString
+  direccion_comercial: MyString
+  email: MyString
+  usuario: MyString
+  telefono: MyString
+  usuario_api: MyString
+  llave_api: MyString
+  estado: false
+  eliminado: false
