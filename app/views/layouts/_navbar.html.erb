@@ -36,6 +36,7 @@
                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                    <% if current_user.rol_empresa? %>
                                         <%= link_to 'Editar Empresa', edit_empresa_path(current_user.empresa_id), class:"dropdown-item" %>
+                                        <%= link_to 'Usuarios', empresa_usuarios_path(current_user.empresa_id), class:"dropdown-item" %>
                                    <%end%>
                                    <%= link_to 'Edit Profile', edit_user_registration_path, class:"dropdown-item" %>
                                    <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"dropdown-item"  %>

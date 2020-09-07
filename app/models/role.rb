@@ -20,7 +20,6 @@ class Role < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { case_sensitive: true }, length: {maximum: 50}
   
-  
   has_and_belongs_to_many :users, :join_table => :users_roles
   
   belongs_to :resource,

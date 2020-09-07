@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Empresas</h1>
+<%= form_for "", url: empresas_path, role: "search" , method: :get do  %>
+  <%= text_field_tag :search, @search, placeholder: "Buscar ..." %>
+<% end %>
 
 <table class="table table-striped">
   <thead>
@@ -37,7 +40,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @collection, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <br>
-
-<%= link_to 'Crear Empresa', new_empresa_path, class:"btn btn-success" %>
+<%= link_to 'Regresar', root_path, class:"btn btn-lg btn-secondary block" %>
+<%= link_to 'Crear Empresa', new_empresa_path, class:"btn btn-lg btn-success block float-right" %>

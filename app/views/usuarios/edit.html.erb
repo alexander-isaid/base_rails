@@ -2,5 +2,8 @@
 
 <%= render 'form', usuario: @usuario %>
 
-<%= link_to 'Show',empresa_usuario_path(@usuario.empresa_id, @usuario.id) %> |
-<%= link_to 'Back', empresa_usuarios_path(@empresa) %>
+<%= link_to 'Regresar', empresa_usuarios_path(@empresa), class:"btn btn-lg btn-secondary" %>
+
+<% if current_user.rol_admin? %>
+     <%= link_to 'Mostrar', empresa_usuario_path(@usuario.empresa_id, @usuario.id), class:"btn btn-lg btn-info float-right" %> 
+<% end %>

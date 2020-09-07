@@ -45,7 +45,12 @@
   <%= @empresa.estado ? "Activo" : "Inactivo" %>
 </p>
 
+<p>
+  <strong>Usuarios: </strong>
+  <%= link_to "Usuarios", empresa_usuarios_path(@empresa), class:"btn btn-primary"%>
+<p>
+
+<%= link_to 'Regresar', empresas_path, class:"btn btn-lg btn-secondary" %>
 
 
-<%= link_to 'Editar', edit_empresa_path(@empresa), class:"btn btn-warning" %> |
-<%= link_to 'Regresar', empresas_path, class:"btn btn-secondary" %>
+<%= link_to 'Editar', edit_empresa_path(@empresa), class:"btn btn-lg btn-warning block float-right" %> 

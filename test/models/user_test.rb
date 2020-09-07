@@ -5,8 +5,10 @@
 #  id                     :integer          not null, primary key
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :string(255)
+#  eliminado              :boolean
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
+#  estado                 :boolean
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
 #  name                   :string(255)      default(""), not null

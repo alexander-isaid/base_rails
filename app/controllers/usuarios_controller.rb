@@ -1,11 +1,17 @@
 class UsuariosController < ApplicationController
+  load_and_authorize_resource
+  check_authorization
   before_action :set_empresa
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
   # GET /usuarios
   # GET /usuarios.json
   def index
-      @usuarios = @empresa.usuarios
+      @usuarios = @empresa.usuarios.activos.paginate(page: params[:page], per_page: 5)
+      if params[:search].present? 
+        @search_terms = params[:search]
+        @usuarios = @usuarios.search_by(@search_terms)
+      end
   end
 
   # GET /usuarios/1
@@ -28,6 +34,8 @@ class UsuariosController < ApplicationController
   def create
     @usuario = Usuario.new(usuario_params)
     @usuario.empresa_id = @empresa.id
+    @usuario.estado = true
+    @usuario.eliminado = false
     respond_to do |format|
       if @usuario.save
         format.html { redirect_to empresa_usuario_path(@usuario.empresa_id,@usuario.id), notice: 'Usuario was successfully created.' }
@@ -44,7 +52,8 @@ class UsuariosController < ApplicationController
   def update
     respond_to do |format|
       if @usuario.update(usuario_params)
-        format.html { redirect_to @usuario, notice: 'Usuario was successfully updated.' }
+        @usuario.modificar_role(params[:usuario][:roles])
+        format.html { redirect_to empresa_usuarios_path(@usuario.empresa_id), notice: 'Usuario was successfully updated.' }
         format.json { render :show, status: :ok, location: @usuario }
       else
         format.html { render :edit }

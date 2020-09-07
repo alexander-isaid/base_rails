@@ -10,16 +10,20 @@
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
     <% end %>
+    <%= f.input :roles, collection: Role.where("name != 'admin'"), label_method: :name, value_method: :id, checked: @usuario.roles %> 
+    <%# f.input :roles, collection: Role.where("name != 'admin'"), as: :radio_buttons, label_method: :name, value_method: :id, :checked => @usuario.roles %> 
+    
+    <%# f.association :roles,  :collection => Role.where("name != 'admin'"), value_method: :name,  required: true %>
   </div>
 
   <div class="form-actions">
     <% if @usuario.new_record? %>
       <div class="form-actions text-center">
-        <%= f.button :submit, class:"btn btn-transportes", :value =>"Nuevo Usuario" %>
+        <%= f.button :submit, class:"btn btn-transportes", :value =>"Nuevo Usuario", class: "btn btn-lg btn-success" %>
       </div>
     <% else %>
       <div class="form-actions text-center">
-        <%= f.button :submit, class:"btn btn-transportes", :value => "Editar Usuario" %>
+        <%= f.button :submit, class:"btn btn-transportes", :value => "Editar Usuario", class: "btn btn-lg btn-primary" %>
       </div>
     <% end %>
   </div>

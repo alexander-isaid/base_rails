@@ -5,8 +5,10 @@
 #  id                     :integer          not null, primary key
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :string(255)
+#  eliminado              :boolean
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
+#  estado                 :boolean
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string(255)
 #  name                   :string(255)      default(""), not null
@@ -33,17 +35,19 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
- 
-  rolify 
+  
+  rolify strict: true 
+  accepts_nested_attributes_for :roles
   after_create :assign_default_role
 
   belongs_to :empresa
 
   def assign_default_role
-    self.add_role "empresa" if self.roles.blank?
+    self.add_role "empresa"
   end
 
-  def asignar_role(role)
+  def asignar_role(name)
+    role = Role.find_by(name: name)
     self.add_role role
   end
 
@@ -59,7 +63,4 @@ class User < ApplicationRecord
     has_role?(:operador)
   end
 
-  def current_role
-    self.roles.first.name
-  end
 end

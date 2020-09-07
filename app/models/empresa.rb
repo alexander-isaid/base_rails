@@ -25,4 +25,10 @@ class Empresa < ApplicationRecord
      has_many :users
      has_many :usuarios
 
+
+     def self.search_by(search_terms)
+          where("nit = :search_term OR nombre_comercial = :search_term OR razon_social = :search_term", search_term: search_terms)
+     end
+
+
 end

@@ -131,8 +131,6 @@ GEM
     public_suffix (4.0.5)
     puma (4.3.5)
       nio4r (~> 2.0)
-    pundit (2.1.0)
-      activesupport (>= 3.0.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -239,6 +237,9 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.3.0)
+    will_paginate-bootstrap4 (0.2.2)
+      will_paginate (~> 3.0, >= 3.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.0)
@@ -258,7 +259,6 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)
-  pundit
   rails (~> 6.0.3, >= 6.0.3.1)
   rest-client
   rolify
@@ -274,6 +274,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+  will_paginate-bootstrap4
 
 RUBY VERSION
    ruby 2.6.3p62

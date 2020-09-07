@@ -1,6 +1,7 @@
 <h1>Modificar Empresa</h1>
 
 <%= render 'form', empresa: @empresa %>
-
+<% if current_user.rol_admin? %>
 <%= link_to 'Mostar', @empresa, class: "btn btn-info" %> |
-<%= link_to 'Regresar', empresas_path, class: "btn btn-secondary" %>
+<% end %>
+<%= link_to 'Regresar', empresas_path, class: "btn btn-lg btn-secondary" %>

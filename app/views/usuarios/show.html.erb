@@ -11,9 +11,10 @@
 </p>
 
 <p>
-  <strong>Empresa:</strong>
-  <%= @usuario.empresa_id %>
+  <strong>Rol:</strong>
+   <%= @usuario.current_role %>
 </p>
 
-<%= link_to 'Edit', edit_empresa_usuario_path(@usuario.empresa_id, @usuario.id) %> |
-<%= link_to 'Back', empresa_usuarios_path(@usuario.empresa_id) %>
+<%= link_to 'Regresar', empresa_usuarios_path(@usuario.empresa_id), class:"btn btn-lg btn-secondary" %>
+
+<%= link_to 'Editar', edit_empresa_usuario_path(@usuario.empresa_id, @usuario.id), class:"btn btn-lg btn-warning float-right" %> 

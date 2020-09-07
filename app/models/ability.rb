@@ -13,9 +13,9 @@ class Ability
     elsif user.has_role? :empresa
       #can [:update, :show], Empresa, id: user.empresa.id
       can :update, Empresa, id: user.empresa.id
-      can :manage, User
-    else
-      can :manage, User, id: user.id
+      can :manage, User, empresa_id: user.empresa_id
+    else 
+      can :update, User, id: user.id
 
     end
 

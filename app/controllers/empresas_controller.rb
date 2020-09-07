@@ -6,7 +6,11 @@ class EmpresasController < ApplicationController
   # GET /empresas
   # GET /empresas.json
   def index
-    @empresas = Empresa.all
+    @empresas = Empresa.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    if params[:search].present? 
+      @search_terms = params[:search]
+      @empresas = @empresas.search_by(@search_terms)
+    end
   end
 
   # GET /empresas/1
@@ -45,10 +49,10 @@ class EmpresasController < ApplicationController
   def update
     respond_to do |format|
       if @empresa.update(empresa_params)
-        if current_user.admin?
+        if current_user.rol_admin?
           format.html { redirect_to @empresa, notice: 'Empresa was successfully updated.' }
           format.json { render :show, status: :ok, location: @empresa }
-        elsif current_user.empresa?
+        elsif current_user.rol_empresa?
           format.html { redirect_to root_path, notice: 'Empresa was successfully destroyed.' }
           format.json { head :no_content }
         end

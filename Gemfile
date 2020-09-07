@@ -64,7 +64,9 @@ gem 'cancancan'
 
 gem 'rolify'
 
-gem 'pundit'
+#gem 'pundit'
+
+gem 'will_paginate-bootstrap4'
 
 gem 'ruby-oci8'
 

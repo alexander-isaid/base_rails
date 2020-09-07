@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_200641) do
+ActiveRecord::Schema.define(version: 2020_09_04_165254) do
 
   create_table "empresas", force: :cascade do |t|
     t.string "nit"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2020_09_01_200641) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "empresa_id", precision: 38
+    t.boolean "estado"
+    t.boolean "eliminado"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["empresa_id"], name: "index_users_on_empresa_id"
     t.index ["reset_password_token"], name: "i_users_reset_password_token", unique: true
