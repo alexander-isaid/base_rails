@@ -36,7 +36,7 @@ class Usuario < User
 
 
   def self.search_by(search_terms)
-    where("(email = :search_term) OR (name = :search_term)", search_term: search_terms)
+    where("LOWER(email) LIKE :search_term OR LOWER(name) LIKE :search_term", search_term:"%#{search_terms.downcase}%")
   end
 
   def estado_html
@@ -49,19 +49,17 @@ class Usuario < User
 
 
   def modificar_role(role_id)
-    tiene_rol =self.has_any_role?
-    role = Role.find(role_id)
-    if tiene_rol 
-      if self.has_role? role.name
-
+    if role_id.present?
+      role = Role.find(role_id)
+      if self.has_any_role?  # Pregunta si el usuario tiene roles
+        if !self.has_role? role.name # verifica si el rol que eniva no esta asignado 
+          self.roles_name.map{ |rol| self.remove_role(rol) } #elimina el rol que tiene asignado
+          self.add_role role.name #asigna el nuevo rol
+        end
       else
-        self.roles_name.map{ |rol| self.remove_role(rol) }
-        self.add_role role.name
+        self.add_role role.name #asigna el nuevo rol si en caso el usuario no tenga nigun rol
       end
-    else
-      self.add_role role.name
     end
-
   end
 
   def eliminar_role(role)

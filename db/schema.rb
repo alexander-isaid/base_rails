@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_165254) do
+ActiveRecord::Schema.define(version: 2020_09_08_175356) do
+
+  create_table "empresa_pasarelas", force: :cascade do |t|
+    t.integer "empresa_id", precision: 38, null: false
+    t.integer "pasarela_id", precision: 38, null: false
+    t.boolean "estado"
+    t.string "username"
+    t.string "llave"
+    t.string "terminal_id"
+    t.string "merchant"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["empresa_id"], name: "i_empresa_pasarelas_empresa_id"
+    t.index ["pasarela_id"], name: "i_emp_pas_pas_id"
+  end
 
   create_table "empresas", force: :cascade do |t|
     t.string "nit"
@@ -22,6 +36,15 @@ ActiveRecord::Schema.define(version: 2020_09_04_165254) do
     t.string "telefono"
     t.string "usuario_api"
     t.string "llave_api"
+    t.boolean "estado"
+    t.boolean "eliminado"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pasarelas", force: :cascade do |t|
+    t.string "nombre"
+    t.string "url_servicio"
     t.boolean "estado"
     t.boolean "eliminado"
     t.datetime "created_at", precision: 6, null: false
@@ -70,5 +93,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_165254) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "empresa_pasarelas", "empresas"
+  add_foreign_key "empresa_pasarelas", "pasarelas"
   add_foreign_key "users", "empresas"
 end

@@ -20,7 +20,7 @@
         <td><%= usuario.email %></td>
         <td><%= usuario.name %></td>
         <td><%= usuario.current_role %></td>
-        <td><%= usuario.estado_html %>
+        <td><%= estado_html(usuario.estado) %>
         <td><%= link_to 'Mostrar', empresa_usuario_path(usuario.empresa_id, usuario.id), class:"btn btn-info" %></td>
         <td><%= link_to 'Editar', edit_empresa_usuario_path(usuario.empresa_id, usuario.id),class:"btn btn-warning" %></td>
         <td><%= link_to 'Eliminar', empresa_usuario_path(usuario.empresa_id, usuario.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %></td>

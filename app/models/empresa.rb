@@ -19,16 +19,19 @@
 #
 class Empresa < ApplicationRecord
      resourcify
-     scope :activos, -> { where( eliminado: false)}
+     scope :activas, -> { where( eliminado: false)}
 
      validates :nit, presence: true, uniqueness: { case_sensitive: true }
      has_many :users
      has_many :usuarios
-
+     has_many :empresa_pasarelas
 
      def self.search_by(search_terms)
-          where("nit = :search_term OR nombre_comercial = :search_term OR razon_social = :search_term", search_term: search_terms)
+          where("LOWER(nit) LIKE :search_term OR LOWER(nombre_comercial) LIKE :search_term OR LOWER(razon_social) LIKE :search_term", search_term:"%#{search_terms.downcase}%")
      end
 
+     def name
+          self.nombre_comercial
+     end 
 
 end

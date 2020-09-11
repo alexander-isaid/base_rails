@@ -1,6 +1,7 @@
 class UsuariosController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :empresa
   check_authorization
+  before_action :authenticate_user!
   before_action :set_empresa
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
@@ -65,7 +66,7 @@ class UsuariosController < ApplicationController
   # DELETE /usuarios/1
   # DELETE /usuarios/1.json
   def destroy
-    @usuario.destroy
+    @usuario.update(eliminado: true)
     respond_to do |format|
       format.html { redirect_to usuarios_url, notice: 'Usuario was successfully destroyed.' }
       format.json { head :no_content }

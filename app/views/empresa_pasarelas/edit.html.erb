@@ -1,0 +1,6 @@
+<h1>Editar Empresa Pasarela</h1>
+
+<%= render 'form', empresa_pasarela: @empresa_pasarela %>
+
+<%= link_to 'Regresar', empresa_empresa_pasarelas_path(@empresa_pasarela.empresa_id), class: "btn btn-lg btn-secondary" %>
+<%= link_to 'Mostrar',  empresa_empresa_pasarela_path(@empresa_pasarela.empresa_id, @empresa_pasarela.id), class: "btn btn-lg btn-info float-right" %> 

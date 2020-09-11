@@ -1,0 +1,22 @@
+
+<%= simple_form_for([@empresa,@empresa_pasarela]) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.association :pasarela,  collection: Pasarela.activa,  :input_html => {:onchange => "tipo_pasarela(this)"} %>
+    <%= f.input :estado %>
+    <%= f.input :username %>
+    <%= f.input :llave %>
+    <%= f.input :terminal_id %>
+    <%= f.input :merchant %>
+  </div>
+
+  <div class="form-actions text-center">
+    <% if @empresa_pasarela.new_record? %>
+      <%= f.button :submit, class:"btn btn-lg btn-success", :value => "Agregar pasarela empresa" %>
+    <% else %>
+      <%= f.button :submit, class:"btn btn-lg btn-primary", :value => "Editar pasarela empresa" %>
+    <% end %>
+  </div>
+<% end %>

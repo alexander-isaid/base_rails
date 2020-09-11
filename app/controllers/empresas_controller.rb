@@ -6,7 +6,7 @@ class EmpresasController < ApplicationController
   # GET /empresas
   # GET /empresas.json
   def index
-    @empresas = Empresa.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    @empresas = Empresa.activas.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     if params[:search].present? 
       @search_terms = params[:search]
       @empresas = @empresas.search_by(@search_terms)

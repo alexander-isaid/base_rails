@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: pasarelas
+#
+#  id           :integer          not null, primary key
+#  eliminado    :boolean
+#  estado       :boolean
+#  nombre       :string(255)
+#  url_servicio :string(255)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+one:
+  nombre: MyString
+  url_servicio: MyString
+  estado: false
+  eliminado: false
+
+two:
+  nombre: MyString
+  url_servicio: MyString
+  estado: false
+  eliminado: false

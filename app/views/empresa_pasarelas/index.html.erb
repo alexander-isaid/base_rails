@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Empresa Pasarelas</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Pasarela</th>
+      <th>Estado</th>
+      <th>Username</th>
+      <th>Llave</th>
+      <th>Terminal</th>
+      <th>Merchant</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @empresa_pasarelas.each do |empresa_pasarela| %>
+      <tr>
+        <td><%= empresa_pasarela.pasarela.name %></td>
+        <td><%= estado_html(empresa_pasarela.estado) %></td>
+        <td><%= empresa_pasarela.username.truncate(20) %></td>
+        <td><%= empresa_pasarela.llave.truncate(20) %></td>
+        <td><%= empresa_pasarela.terminal_id.truncate(20) %></td>
+        <td><%= empresa_pasarela.merchant %></td>
+        <td><%= link_to 'Mostar', empresa_empresa_pasarela_path(@empresa.id, empresa_pasarela.id), class: "btn btn-lg btn-info" %></td>
+        <td><%= link_to 'Editar', edit_empresa_empresa_pasarela_path(@empresa.id, empresa_pasarela.id), class: "btn btn-lg btn-warning" %></td>
+        <td><%= link_to 'Eliminar', empresa_empresa_pasarela_path(@empresa.id, empresa_pasarela.id), class: "btn btn-lg btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Regresar', empresa_path(@empresa.id), class:"btn btn-lg btn-secondary" %>
+<% if can? :create, @empresa_pasarela %>
+<%= link_to 'Nueva Empresa Pasarela', new_empresa_empresa_pasarela_path(@empresa.id), class:"btn btn-lg btn-success float-right" %>
+<% end %>

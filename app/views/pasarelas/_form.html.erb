@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@pasarela) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :nombre %>
+    <%= f.input :url_servicio %>
+    <%= f.input :estado %>
+  </div>
+
+  <div class="form-actions text-center">
+    <% if @pasarela.new_record? %>
+        <%= f.button :submit, class:"btn btn-lg btn-success", :value => "Nueva pasarela" %>
+    <% else %>
+        <%= f.button :submit, class:"btn btn-lg btn-primary", :value => "Editar pasarela" %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Pasarela:</strong>
+  <%= @empresa_pasarela.pasarela.name %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= estado_html(@empresa_pasarela.estado) %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @empresa_pasarela.username %>
+</p>
+
+<p>
+  <strong>Llave:</strong>
+  <%= @empresa_pasarela.llave %>
+</p>
+
+<p>
+  <strong>Terminal:</strong>
+  <%= @empresa_pasarela.terminal_id %>
+</p>
+
+<p>
+  <%if @empresa_pasarela.pasarela.name == "VISANET" %>
+    <strong>Merchant:</strong>
+    <%= @empresa_pasarela.merchant %>
+  <% end %>
+</p>
+
+<%= link_to 'Regresar', empresa_empresa_pasarelas_path(@empresa_pasarela.empresa_id), class: "btn btn-lg btn-secondary" %>
+<%= link_to 'Editar', edit_empresa_empresa_pasarela_path(@empresa_pasarela.empresa_id, @empresa_pasarela.id), class:"btn btn-lg btn-warning float-right" %>

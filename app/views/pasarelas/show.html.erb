@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @pasarela.nombre %>
+</p>
+
+<p>
+  <strong>Url servicio:</strong>
+  <%= @pasarela.url_servicio %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= estado_html(@pasarela.estado) %>
+</p>
+
+
+
+<%= link_to 'Regresar', pasarelas_path, class:"btn btn-lg btn-secondary" %>
+<%= link_to 'Editar', edit_pasarela_path(@pasarela), class:"btn btn-lg btn-warning float-right" %> 
